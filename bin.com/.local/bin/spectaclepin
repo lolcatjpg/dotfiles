@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+OUT=$(mktemp)
+spectacle -brno "$OUT"
+
+if [[ -s $OUT ]]; then
+    /usr/bin/env feh --auto-zoom --title 'spectaclepin pinned image' "$OUT"
+fi
+rm "$OUT"
+

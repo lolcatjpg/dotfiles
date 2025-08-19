@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+get_list() {
+    list="$(dodona display | sed -E 's/(^|.\[..) */\1/')"
+}
+
+fzf_status=0
+get_list
+
+if grep --silent '^You can find' <<< "$list"; then
+    dodona up
+    get_list
+fi
+
+while ! grep --silent '^You can find' <<< "$list" && ((fzf_status == 0)); do
+    list="$(echo "$list" | grep -v '^$')"
+    list="$(echo "$list" | head -n 1; echo '0: up'; echo "$list" | tail -n +2)"
+    selection="$(echo "$list" | fzf --ansi --no-sort --reverse --header-lines 1 --preview 'dodona status' --preview-window right,50% | sed -E 's/^([0-9]+) *:.*/\1/')"
+    fzf_status=$?
+    if [[ $selection == '0' ]]; then
+        dodona up > /dev/null
+    elif [[ -n $selection ]]; then
+        dodona select "$selection" > /dev/null
+    fi
+    get_list
+done
+
+grep --silent '^You can find' <<< "$list" && echo "$list"
+
