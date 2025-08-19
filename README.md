@@ -10,7 +10,20 @@ stow NAME
 e.g.
 ```
 cd ~/dotfiles
-stow niri
+stow niri.com
 ```
+
+to link all for specific target:
+```bash
+stow *.com
+stow *.laptop
+# etc
+```
+
+to link systemd services:
+```bash
+systemctl --user link systemd/*.service
+```
+
 
 
