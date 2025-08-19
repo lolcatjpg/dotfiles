@@ -1,0 +1,1 @@
+/home/lolcat/.local/share/broot/launcher/fish/br.fish

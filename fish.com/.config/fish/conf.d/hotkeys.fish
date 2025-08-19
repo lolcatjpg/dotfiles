@@ -1,0 +1,2 @@
+bind \cX 'history-pager'
+

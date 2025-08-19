@@ -1,0 +1,16 @@
+default-timeout=5000
+
+border-size=1
+border-radius=4
+width=400
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#fab387
+progress-color=over #313244
+
+[urgency=high]
+default-timeout=0
+border-color=#e78284
+border-size=3
+

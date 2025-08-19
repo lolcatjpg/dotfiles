@@ -1,0 +1,11 @@
+# vim: syntax=nginx ts=4 sw=4
+
+profile {
+	output eDP-1 disable
+	output "Philips Consumer Electronics Company PHL 243S7 UHB2021011032" enable
+}
+
+profile {
+	output eDP-1 enable
+}
+
