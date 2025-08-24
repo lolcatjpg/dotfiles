@@ -23,6 +23,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'abecodes/tabout.nvim'
 Plug 'Saghen/blink.cmp'
 Plug 'm4xshen/autoclose.nvim'
+Plug 'numToStr/Comment.nvim'
 "Plug 'nvim-tree/nvim-tree.lua'
 
 
