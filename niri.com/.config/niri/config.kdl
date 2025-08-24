@@ -60,7 +60,7 @@ input {
         }
     }
 
-    warp-mouse-to-focus
+    //warp-mouse-to-focus
 
     touchpad {
         tap
