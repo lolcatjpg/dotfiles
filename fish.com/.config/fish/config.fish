@@ -4,3 +4,4 @@ end
 
 thefuck --alias | source
 # test change
+zoxide init fish | source
