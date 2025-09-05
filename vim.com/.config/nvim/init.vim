@@ -30,14 +30,15 @@ Plug 'numToStr/Comment.nvim'
 Plug 'rafamadriz/neon'
 Plug 'sainnhe/sonokai'
 Plug 'tanvirtin/monokai.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
-Plug 'xiyaowong/transparent.nvim'
+" Plug 'xiyaowong/transparent.nvim'
 
 call plug#end()
 
 
 """ theme
-colorscheme monokai
+colorscheme catppuccin-mocha
 
 
 :source ~/.config/nvim/config.lua
