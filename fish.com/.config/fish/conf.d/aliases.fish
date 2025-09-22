@@ -4,6 +4,7 @@ if status is-interactive
     alias l "lsd -gF"
     alias cat "bat -p"
     alias man "batman"
+    alias cd "z"
     alias fccopy "fish_clipboard_copy"
     alias fcpaste "fish_clipboard_paste"
     alias reload "exec fish"
