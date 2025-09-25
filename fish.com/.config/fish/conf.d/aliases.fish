@@ -8,6 +8,7 @@ if status is-interactive
     alias fccopy "fish_clipboard_copy"
     alias fcpaste "fish_clipboard_paste"
     alias reload "exec fish"
+    alias table "column -ts:"
 
     alias config "git --git-dir=$HOME/dotfiles/.git/ --work-tree=$HOME/dotfiles/"
     abbr -a confaa "config add -A"
