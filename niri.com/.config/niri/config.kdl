@@ -36,6 +36,14 @@ window-rule {
     default-column-width { proportion 0.5; }
 }
 
+window-rule {
+    match app-id=r#"^Discord$"#
+    match app-id=r#"^vesktop$"#
+    match app-id=r#"^Mattermost$"#
+    match app-id=r#"^Signal$"#
+    default-column-width { proportion 0.7; }
+}
+
 // rule for dragged songs in spotify, most likely won't match windows we want to tile
 window-rule {
     match title=r#"^$"# // app-id=r#"unset"# 
