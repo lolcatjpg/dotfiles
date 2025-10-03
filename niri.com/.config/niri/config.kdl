@@ -6,7 +6,9 @@ spawn-at-startup "xwayland-satellite"
 environment {
     DISPLAY ":0"
 
-    QT_QPA_PLATFORMTHEME "qt6ct"
+    // QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_QPA_PLATFORMTHEME "gtk3"
+
 }
 
 screenshot-path "~/pictures/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -40,7 +42,7 @@ window-rule {
     match app-id=r#"^Discord$"#
     match app-id=r#"^vesktop$"#
     match app-id=r#"^Mattermost$"#
-    match app-id=r#"^Signal$"#
+    match app-id=r#"^org.signal.Signal$"#
     default-column-width { proportion 0.7; }
 }
 
@@ -113,6 +115,10 @@ layout {
     }
 }
 prefer-no-csd
+
+overview {
+    backdrop-color "#000000"
+}
 
 
 binds {
