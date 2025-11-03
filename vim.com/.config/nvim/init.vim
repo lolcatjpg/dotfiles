@@ -24,6 +24,9 @@ Plug 'abecodes/tabout.nvim'
 Plug 'Saghen/blink.cmp'
 Plug 'm4xshen/autoclose.nvim'
 Plug 'numToStr/Comment.nvim'
+Plug 'nvim-tree/nvim-web-devicons' " icons with colours
+" Plug 'ryanoasis/vim-devicons' Icons without colours
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 "Plug 'nvim-tree/nvim-tree.lua'
 
 
