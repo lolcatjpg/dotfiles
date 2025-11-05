@@ -83,9 +83,19 @@ input {
     }
 }
 
+// background for workspaces
+// https://yalter.github.io/niri/Overview.html#backdrop-customization
+// Make the wallpaper stationary, rather than moving with workspaces.
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
 
 /// layout ///
 layout {
+    background-color "transparent"
     gaps 4
     center-focused-column "never"
     //center-focused-column "on-overflow"
@@ -117,7 +127,10 @@ layout {
 prefer-no-csd
 
 overview {
-    backdrop-color "#000000"
+    // backdrop-color "#000000"
+    workspace-shadow {
+        off
+    }
 }
 
 
@@ -370,10 +383,12 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
-    Mod+Shift+S { spawn "sh" "-c" "wl-paste | satty -f -"; }  // windows snipping tool key
+    //Print { screenshot; }
+    //Ctrl+Print { screenshot-screen; }
+    //Alt+Print { screenshot-window; }
+    //Mod+Shift+S { spawn "sh" "-c" "wl-paste | satty -f -"; }  // windows snipping tool key
+    Print hotkey-overlay-title="take screenshot with flameshot" { spawn "flameshot" "gui"; }
+    Alt+Print hotkey-overlay-title="take screenshot with niri" { screenshot; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
