@@ -10,7 +10,7 @@ die() {
 usage() {
 	cat <<EOF >&2
 usage:
-$0 volume
+$0 audio
 $0 brightness
 EOF
 exit 2
@@ -28,7 +28,7 @@ notify() {
 		-t $NOTIFICATION_TIME \
 		-h "string:x-canonical-private-synchronous:com-lolcatjpg-utilscripts-libnotifyosd" \
 		-h int:value:"$VALUE" \
-		"$TEXT: $VALUE" 
+		"$TEXT" 
 }
 
 notify_text() {
@@ -57,17 +57,39 @@ mute() {
 		|| notify_text unmuted
 }
 
+audio() {
+	read audio_info < <(wpctl status \
+		| rg -A 1000 'Audio' \
+		| rg -A 1000 'Sinks' \
+		| rg '\*' \
+		| head -n 1 \
+		| sed 's/.*\. //' \
+		| sed -r 's/ +/ /g' \
+	)
+
+	read audio_value < <(
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ \
+		| grep -Eo '[0-9]+\.[0-9]+' \
+		| sed 's/\.//' \
+		| sed -r 's/^0*//' \
+	)
+
+	echo "$audio_info" "$audio_value"
+	notify "$audio_info" "$audio_value"
+}
+
 brightness() {
 	local current="$(brightnessctl get)"
 	local max="$(brightnessctl max)"
 	local brightness="$(( current * 100 / max ))"
-	notify brightness "$brightness"
+	notify "brightness: $brightness" "$brightness"
 }
 
 ## main ##
 case "$1" in
-	volume) volume ;;
+	audio) audio;;
 	brightness) brightness ;;
+	volume) volume ;;
 	mute) mute ;;
 	*) usage ;;
 esac

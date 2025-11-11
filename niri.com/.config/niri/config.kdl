@@ -164,12 +164,12 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0.02+ ; libnotify-osd.sh volume"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02- ; libnotify-osd.sh volume"; }
-    Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0.01+ ; libnotify-osd.sh volume"; }
-    Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01- ; libnotify-osd.sh volume"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0.02+ ; libnotify-osd.sh audio"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02- ; libnotify-osd.sh audio"; }
+    Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0.01+ ; libnotify-osd.sh audio"; }
+    Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01- ; libnotify-osd.sh audio"; }
 
-    XF86AudioMute        allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ; libnotify-osd.sh mute"; }
+    XF86AudioMute        allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ; libnotify-osd.sh audio"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
