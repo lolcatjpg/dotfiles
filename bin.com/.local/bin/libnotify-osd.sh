@@ -74,7 +74,6 @@ audio() {
 		| sed -r 's/^0*//' \
 	)
 
-	echo "$audio_info" "$audio_value"
 	notify "$audio_info" "$audio_value"
 }
 
