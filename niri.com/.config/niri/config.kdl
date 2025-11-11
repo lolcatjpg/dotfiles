@@ -3,6 +3,7 @@
 //spawn-at-startup "sh" "-c" "swaybg -i ~/pictures/wallpaper/m-26-01.jpg"
 
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "hypridle"
 environment {
     DISPLAY ":0"
 
