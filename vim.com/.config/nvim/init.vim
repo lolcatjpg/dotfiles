@@ -54,6 +54,3 @@ colorscheme catppuccin-mocha
 
 :source ~/.config/nvim/config.lua
 
-" vim which key
-set timeoutlen=100
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
