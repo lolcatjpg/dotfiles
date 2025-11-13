@@ -10,8 +10,8 @@ die() {
 usage() {
 	cat <<EOF >&2
 usage:
-$0 audio
-$0 brightness
+$0 audio		-- show audio info
+$0 brightness	-- show brightness info
 EOF
 exit 2
 }
@@ -42,21 +42,6 @@ notify_text() {
 		"$TEXT" 
 }
 
-volume() {
-	wpctl get-volume @DEFAULT_AUDIO_SINK@ \
-		| grep -Eo '[0-9]+\.[0-9]+' \
-		| sed 's/\.//' \
-		| sed -r 's/^0*//' \
-		| notify volume -
-}
-
-mute() {
-	wpctl get-volume @DEFAULT_AUDIO_SINK@ \
-		| grep --silent 'MUTED' \
-		&& notify_text muted \
-		|| notify_text unmuted
-}
-
 audio() {
 	read audio_info < <(wpctl status \
 		| rg -A 1000 'Audio' \
@@ -70,8 +55,8 @@ audio() {
 	read audio_value < <(
 	wpctl get-volume @DEFAULT_AUDIO_SINK@ \
 		| grep -Eo '[0-9]+\.[0-9]+' \
-		| sed 's/\.//' \
-		| sed -r 's/^0*//' \
+		| xargs echo '100 *' \
+		| bc
 	)
 
 	notify "$audio_info" "$audio_value"
