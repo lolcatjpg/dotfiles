@@ -8,10 +8,11 @@ die() {
 }
 
 usage() {
+	COMMAND="$(echo $0 | sed 's#.*/##')"
 	cat <<EOF >&2
 usage:
-$0 audio		-- show audio info
-$0 brightness	-- show brightness info
+$COMMAND audio		-- show audio info
+$COMMAND brightness	-- show brightness info
 EOF
 exit 2
 }
