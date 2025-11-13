@@ -19,6 +19,7 @@ if status is-interactive
     abbr -a gaa "git add -A"
     abbr -a gst "git status"
     abbr -a gpsh "git push"
+    abbr -a glog "git log --graph --decorate --oneline --all"
     abbr -a --set-cursor gcm "git commit -m '%'"
     abbr -a --set-cursor gcam "git commit -am '%'"
 end

@@ -14,6 +14,13 @@ environment {
 
 screenshot-path "~/pictures/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png"
 
+switch-events {
+    lid-close { spawn "systemctl" "suspend"; }
+    //lid-open { spawn "notify-send" "The laptop lid is open!"; }
+    //tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
+    //tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
+}
+
 
 /// window rules /// 
 window-rule {
@@ -56,6 +63,13 @@ window-rule {
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+}
+
+// temporary rules
+window-rule {
+    // funcprog project
+    match title="^Asteroid Miner$"
+    open-floating true
 }
 
 

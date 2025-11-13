@@ -1,3 +1,7 @@
+
+vim.g.mapleader = " "
+vim.g.mapllocaleader = " "
+
 --- plugin settings ---
 
 require("autoclose").setup {
@@ -10,5 +14,7 @@ require("autoclose").setup {
 
 require('Comment').setup()
 
+vim.opt.termguicolors = true
+require("bufferline").setup{}
 
 
