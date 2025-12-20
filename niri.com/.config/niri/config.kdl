@@ -208,8 +208,8 @@ binds {
     Mod+Up hotkey-overlay-title=null    { focus-window-up; }
     Mod+Right hotkey-overlay-title=null { focus-column-right; }
     Mod+H hotkey-overlay-title=null     { focus-column-left; }
-    Mod+U hotkey-overlay-title=null     { focus-window-down; }
-    Mod+I hotkey-overlay-title=null     { focus-window-up; }
+    // Mod+U hotkey-overlay-title=null     { focus-window-down; }
+    // Mod+I hotkey-overlay-title=null     { focus-window-up; }
     Mod+L hotkey-overlay-title=null     { focus-column-right; }
 
     Mod+Alt+Left hotkey-overlay-title=null  { move-column-left; }
@@ -217,16 +217,16 @@ binds {
     Mod+Alt+Up hotkey-overlay-title=null    { move-window-up; }
     Mod+Alt+Right hotkey-overlay-title=null { move-column-right; }
     Mod+Alt+H hotkey-overlay-title=null     { move-column-left; }
-    Mod+Alt+U hotkey-overlay-title=null     { move-window-down; }
-    Mod+Alt+I hotkey-overlay-title=null     { move-window-up; }
+    // Mod+Alt+U hotkey-overlay-title=null     { move-window-down; }
+    // Mod+Alt+I hotkey-overlay-title=null     { move-window-up; }
     Mod+Alt+L hotkey-overlay-title=null     { move-column-right; }
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+Alt+J     { move-window-down-or-to-workspace-down; }
+    Mod+Alt+K     { move-window-up-or-to-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -242,14 +242,14 @@ binds {
     Mod+Shift+K     { focus-monitor-up; }
     Mod+Shift+L     { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Alt+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Alt+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Alt+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Alt+Right { move-column-to-monitor-right; }
+    Mod+Shift+Alt+H     { move-column-to-monitor-left; }
+    Mod+Shift+Alt+J     { move-column-to-monitor-down; }
+    Mod+Shift+Alt+K     { move-column-to-monitor-up; }
+    Mod+Shift+Alt+L     { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -259,10 +259,10 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+J              { focus-workspace-down; }
-    Mod+K              { focus-workspace-up; }
-    Mod+Alt+J         { move-column-to-workspace-down; }
-    Mod+Alt+K         { move-column-to-workspace-up; }
+    // Mod+J              { focus-workspace-down; }
+    // Mod+K              { focus-workspace-up; }
+    // Mod+Alt+J         { move-column-to-workspace-down; }
+    // Mod+Alt+K         { move-column-to-workspace-up; }
     Mod+Alt+Page_Down hotkey-overlay-title=null { move-column-to-workspace-down; }
     Mod+Alt+Page_Up hotkey-overlay-title=null   { move-column-to-workspace-up; }
     Mod+Page_Down hotkey-overlay-title=null      { focus-workspace-down; }
@@ -349,9 +349,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
+    Mod+Comma  hotkey-overlay-title="consume right window into column" { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    Mod+Period hotkey-overlay-title="expel right window from column" { expel-window-from-column; }
 
     Mod+R hotkey-overlay-title=null { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
@@ -390,7 +390,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
+    Mod+W hotkey-overlay-title="toggle tabbed mode" { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
@@ -415,7 +415,7 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Ctrl+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Ctrl+Escape allow-inhibiting=false hotkey-overlay-title="toggle hotkey inhibiting" { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E hotkey-overlay-title=null { quit; }
