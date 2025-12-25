@@ -10,6 +10,7 @@ environment {
 
     QT_QPA_PLATFORMTHEME "qt6ct"
     // QT_QPA_PLATFORMTHEME "gtk3"
+    QT_STYLE_OVERRIDE "kvantum"
 
 }
 
@@ -404,8 +405,8 @@ binds {
     //Ctrl+Print { screenshot-screen; }
     //Alt+Print { screenshot-window; }
     //Mod+Shift+S { spawn "sh" "-c" "wl-paste | satty -f -"; }  // windows snipping tool key
-    Print hotkey-overlay-title="take screenshot with flameshot" { spawn "flameshot" "gui"; }
-    Alt+Print hotkey-overlay-title="take screenshot with niri" { screenshot; }
+    Print hotkey-overlay-title="take screenshot with niri" { screenshot; }
+    Alt+Print hotkey-overlay-title="take screenshot with flameshot" { spawn "flameshot" "gui"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
