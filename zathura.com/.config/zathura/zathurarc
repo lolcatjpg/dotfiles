@@ -1,0 +1,9 @@
+set recolor
+set recolor-keephue
+set recolor-reverse-video
+
+set notification-bg black
+set notification-fg "#eeeeee"
+
+
+
