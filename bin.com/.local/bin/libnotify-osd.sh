@@ -53,14 +53,20 @@ audio() {
 		| sed -r 's/ +/ /g' \
 	)
 
-	read audio_value < <(
-	wpctl get-volume @DEFAULT_AUDIO_SINK@ \
+	audio_value="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ \
 		| grep -Eo '[0-9]+\.[0-9]+' \
 		| xargs echo '100 *' \
 		| bc
-	)
+	)"
 
-	notify "$audio_info" "$audio_value"
+	audio_device="$(wpctl inspect @DEFAULT_AUDIO_SINK@ \
+		| rg node.description \
+		| sed -r 's/.*"([^"]*)".*/\1/'
+	)"
+
+	display_value="$(sed -r 's/\.[0-9]+//' <<< $audio_value)"
+
+	notify "${display_value}% ($audio_device)" "$audio_value"
 }
 
 brightness() {

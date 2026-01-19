@@ -173,6 +173,7 @@ binds {
     Mod+Escape  hotkey-overlay-title=null { spawn "hyprlock"; }
 
     XF86Launch1     hotkey-overlay-title=null   { spawn "pkill" "-SIGUSR1" "waybar"; }
+    F21             hotkey-overlay-title=null   { spawn "pkill" "-SIGUSR1" "waybar"; }
     Mod+Semicolon   hotkey-overlay-title=null   { spawn "pkill" "-SIGUSR1" "waybar"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
