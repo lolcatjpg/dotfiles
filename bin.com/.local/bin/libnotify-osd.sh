@@ -11,8 +11,8 @@ usage() {
 	COMMAND="$(echo $0 | sed 's#.*/##')"
 	cat <<EOF >&2
 usage:
-$COMMAND audio		-- show audio info
-$COMMAND brightness	-- show brightness info
+  $COMMAND audio	show audio info
+  $COMMAND brightness	show brightness info
 EOF
 exit 2
 }
@@ -21,26 +21,38 @@ notify() {
 	# sends notification with progress bar
 	# usage notify TEXT VALUE
 	# if VALUE is `-` then stdin is used as value
-	TEXT="$1"
-	VALUE="$2"
+	VALUE="$1"
+	TEXT="$2"
+	BODY="$3"
 	[[ "$VALUE" = '-' ]] && VALUE="$(cat)"
 
 	notify-send \
 		-t $NOTIFICATION_TIME \
 		-h "string:x-canonical-private-synchronous:com-lolcatjpg-utilscripts-libnotifyosd" \
 		-h int:value:"$VALUE" \
-		"$TEXT" 
+		"$TEXT" "$BODY"
 }
 
 notify_text() {
 	# sends notification without progress bar
 	# usage notify TEXT
 	TEXT="$1"
+	BODY="$2"
 
 	notify-send \
 		-t $NOTIFICATION_TIME \
 		-h "string:x-canonical-private-synchronous:com-lolcatjpg-utilscripts-libnotifyosd" \
-		"$TEXT" 
+		"$TEXT" "$BODY"
+}
+
+audio_device() {
+	wpctl inspect @DEFAULT_AUDIO_SINK@ \
+		| rg 'node\.description' \
+		| sed -r 's/.*"([^"]*)".*/\1/'
+}
+
+is_muted() {
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ | rg -q '\[MUTED\]'
 }
 
 audio() {
@@ -59,29 +71,25 @@ audio() {
 		| bc
 	)"
 
-	audio_device="$(wpctl inspect @DEFAULT_AUDIO_SINK@ \
-		| rg node.description \
-		| sed -r 's/.*"([^"]*)".*/\1/'
-	)"
-
 	display_value="$(sed -r 's/\.[0-9]+//' <<< $audio_value)"
 
-	notify "${display_value}% ($audio_device)" "$audio_value"
+	muted_status=""
+	is_muted && muted_status=" "
+
+	notify "$audio_value" "${muted_status}volume: ${display_value}%" "$(audio_device)"
 }
 
 brightness() {
 	local current="$(brightnessctl get)"
 	local max="$(brightnessctl max)"
 	local brightness="$(( current * 100 / max ))"
-	notify "brightness: $brightness" "$brightness"
+	notify "$brightness" "brightness: ${brightness}%" 
 }
 
 ## main ##
 case "$1" in
 	audio) audio;;
 	brightness) brightness ;;
-	volume) volume ;;
-	mute) mute ;;
 	*) usage ;;
 esac
 
