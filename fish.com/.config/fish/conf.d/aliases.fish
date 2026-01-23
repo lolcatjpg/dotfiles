@@ -7,6 +7,8 @@ if status is-interactive
     alias cd "z"
     alias fccopy "fish_clipboard_copy"
     alias fcpaste "fish_clipboard_paste"
+    alias wlc "wl-copy"
+    alias wlp "wl-paste"
     alias reload "exec fish"
     alias table "column -ts:"
 
