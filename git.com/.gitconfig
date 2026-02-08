@@ -1,2 +1,4 @@
 [init]
 	defaultBranch = main
+[core]
+	excludesFile = /home/lolcat/.gitignore
