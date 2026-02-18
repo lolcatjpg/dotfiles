@@ -2,3 +2,7 @@
 	defaultBranch = main
 [core]
 	excludesFile = /home/lolcat/.gitignore
+[gpg]
+	format = ssh
+[user]
+	signingkey = /home/lolcat/.ssh/id_ed25519
