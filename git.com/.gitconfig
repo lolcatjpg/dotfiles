@@ -6,3 +6,5 @@
 	format = ssh
 [user]
 	signingkey = /home/lolcat/.ssh/id_ed25519.pub
+[commit]
+	gpgsign = true

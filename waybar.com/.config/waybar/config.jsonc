@@ -2,9 +2,10 @@
 // see also https://github.com/Alexays/Waybar/wiki/Examples
 {
     "layer": "top",
-    "mode": "hide",
+    "exclusive": false,
+    // "mode": "dock",
     "position": "top",
-    "start_hidden": true,
+    "start_hidden": false,
     "height": 30,
     "spacing": 1,
     "margin": 0,
