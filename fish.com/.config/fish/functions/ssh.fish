@@ -14,7 +14,7 @@ set FZF_COMMAND fzf \
     --info inline \
     --layout reverse \
     --prompt 'search host > ' \
-    --preview 'rg --multiline -i \'^Host {}(\\n(\\t+| +).*)+\' .ssh/hosts' \
+    --preview 'rg --multiline -i \'^Host {}(\\n(\\t+| +).*)+\' $HOME/.ssh/hosts' \
     --preview-window right,border-left,wrap \
     --bind 'enter:become(echo -n ssh {})' \
     --bind 'alt-enter:become(echo -n mosh {})' \
