@@ -13,7 +13,9 @@ set FZF_COMMAND fzf \
     --layout reverse \
     --prompt 'search host > ' \
     --preview 'rg --multiline -i \'^Host {}(\\n(\\t+| +).*)+\' .ssh/hosts' \
-    --preview-window right,border-left,wrap
+    --preview-window right,border-left,wrap \
+    --bind 'alt-enter:become(mosh {})' \
+    --footer 'enter: connect | alt+enter: connect with mosh'
 
 function _ssh_search
     set host (sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/hosts | $FZF_COMMAND)
