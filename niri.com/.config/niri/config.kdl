@@ -5,6 +5,7 @@
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "hypridle"
 spawn-at-startup "keyd-application-mapper"
+spawn-at-startup "~/.bin/niri-overview-hooks.sh"
 environment {
     DISPLAY ":0"
 
